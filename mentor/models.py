@@ -11,7 +11,9 @@ class Mentor(models.Model):
     phone_number=models.CharField(max_length=10)
     image=models.ImageField(upload_to="mentor_images")
     isStudent=models.BooleanField()
-
+    experience=models.IntegerField()
+    skills=models.TextField()
+    
 
     def __str__(self):
         return self.full_name
@@ -21,8 +23,11 @@ class Course(models.Model):
     isFree=models.BooleanField()
     description=models.TextField()
     mentor=models.ForeignKey(Mentor, on_delete=models.CASCADE)
+     #on_delete=models.CASCADE will delete the course if the mentor is deleted
     price=models.DecimalField(max_digits=6, decimal_places=2,)
-    #on_delete=models.CASCADE will delete the course if the mentor is deleted
+
+
+   
     
     def __str__(self):
         return self.name
